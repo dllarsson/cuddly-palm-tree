@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDragon : MonoBehaviour
 {
-
+    [SerializeField] GameObject Target;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,7 @@ public class EnemyDragon : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-        Vector3 _towerPosition = GameObject.Find("Tower").transform.position;
+        Vector3 _towerPosition = Target.transform.position;
         float step = 0.5f * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position,_towerPosition, step);
     }
