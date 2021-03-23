@@ -9,7 +9,6 @@ public class HpBar : MonoBehaviour
     void Start()
     {
         localScale = transform.localScale;
-        gameObject.GetComponent<RectTransform>().pivot = new Vector2(0,0);
     }
 
     // Update is called once per frame
