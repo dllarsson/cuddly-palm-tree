@@ -2,41 +2,59 @@ using UnityEngine;
 
 public class Turrets : MonoBehaviour
 {
-    private EnemyDragon target;
-    [SerializeField] public float RotationSpeed = 20;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] float maxTurretRange = 10f; //Collider radius
+    float minTurretRange;
 
-    private void OnEnable()
+    private void Start()
     {
-        target = FindObjectOfType<EnemyDragon>();
+        minTurretRange = GetComponent<SpriteRenderer>().bounds.extents.y * 2;
+        //target = FindObjectOfType<EnemyDragon>();
     }
 
-    void rotateToTarget()
+    void RotateToTarget(GameObject target)
     {
-        Vector3 vectorToTarget = target.transform.position - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        angle -= 90; // we need to apply a offset since we want the tip of the cannon to point at the target.
+        //Vector3 vectorToTarget = target.transform.position - transform.position;
+        //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        //angle -= 90; // we need to apply a offset since we want the tip of the cannon to point at the target.
 
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * RotationSpeed);
+        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 0) * (target.transform.position - transform.position).normalized);
     }
 
-    void scanForTarget()
+    void ScanForTarget()
     {
-        transform.Rotate(new Vector3(0, 0, 1), Time.deltaTime * RotationSpeed);
+        transform.Rotate(new Vector3(0, 0, 1), Time.deltaTime * rotationSpeed);
     }
     void Update()
     {
-        Vector2 targetPos = new Vector2(target.transform.position.x, target.transform.position.y);
-        Vector2 myPos = new Vector2(transform.position.x, transform.position.y);
-
-        float inRange = Vector2.Distance(targetPos, myPos);
-        if (inRange < 10.0f )
+        SearchForEnemies();
+    }
+    private void SearchForEnemies()
+    {
+        float nearest = Mathf.Infinity;
+        Collider2D nearestTarget = null;
+        foreach(var target in Physics2D.OverlapCircleAll(transform.position, maxTurretRange))
         {
-            rotateToTarget();
+            if(target.gameObject.CompareTag("Enemy"))
+            {
+                float inRange = Vector2.Distance(target.transform.position, transform.position);
+                if(inRange < nearest && inRange > minTurretRange)
+                {
+                    nearest = inRange;
+                    nearestTarget = target;
+                }
+            }
+        }
+        Debug.Log(nearestTarget);
+        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
+        {
+            RotateToTarget(nearestTarget.gameObject);
         }
         else
         {
-            scanForTarget();
+            ScanForTarget();
         }
     }
 }
