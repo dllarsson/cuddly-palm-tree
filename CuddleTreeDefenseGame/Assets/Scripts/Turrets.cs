@@ -1,10 +1,18 @@
 using UnityEngine;
+using System.Collections;
 
 public class Turrets : MonoBehaviour
 {
     [SerializeField] float rotationSpeed;
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform fireOrigin;
+    [SerializeField] float fireRate = 2f;
+    [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float maxTurretRange = 10f; //Collider radius
+
     float minTurretRange;
+    bool isFiring = false;
+    Coroutine fireTurret;
 
     private void Start()
     {
@@ -25,7 +33,7 @@ public class Turrets : MonoBehaviour
 
     void ScanForTarget()
     {
-        transform.Rotate(new Vector3(0, 0, 1), Time.deltaTime * rotationSpeed);
+        transform.Rotate(Vector3.back, Time.deltaTime * rotationSpeed);
     }
     void Update()
     {
@@ -51,10 +59,39 @@ public class Turrets : MonoBehaviour
         if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
         {
             RotateToTarget(nearestTarget.gameObject);
+            StartFiring();
         }
         else
         {
+            StopFiring();
             ScanForTarget();
+        }
+    }
+    private void StartFiring()
+    {
+        if(!isFiring)
+        {
+            isFiring = true;
+            fireTurret = StartCoroutine(FireWithDelay());
+        }
+    }
+    private void StopFiring()
+    {
+        if(isFiring)
+        {
+            isFiring = false;
+            StopCoroutine(fireTurret);
+        }
+    }
+
+    IEnumerator FireWithDelay()
+    {
+        while(true)
+        {
+            var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
+            projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
+            Destroy(projectile, 10f);
+            yield return new WaitForSeconds(fireRate);
         }
     }
 }
