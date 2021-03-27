@@ -13,4 +13,22 @@ public static class Tools
 
         return toReturn;
     }
+
+    public static void SetColorOnGameObject(GameObject src, Color color)
+    {
+        SpriteRenderer[] children = src.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer comp in children)
+        {
+            comp.color = color;
+        }
+    }
+
+    public static void ToggleScriptsInGameObject(GameObject src, bool enable)
+    {
+        MonoBehaviour[] childScripts = src.GetComponentsInChildren<MonoBehaviour>();
+        foreach (MonoBehaviour test in childScripts)
+        {
+            test.enabled = enable;
+        }
+    }
 }
