@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Turrets : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform fireOrigin;
     [SerializeField] float fireRate = 2f;
@@ -32,6 +31,10 @@ public class Turrets : MonoBehaviour
             var angle = Quaternion.Angle(startRotation, endRotation);
             StartCoroutine(RotateOverTime(startRotation, endRotation, angle / maxRotationSpeed));
         }
+        else
+        {
+            StopFiring();
+        }
     }
     IEnumerator RotateOverTime(Quaternion start, Quaternion end, float speed)
     {
@@ -48,7 +51,7 @@ public class Turrets : MonoBehaviour
 
     void ScanForTarget()
     {
-        transform.Rotate(Vector3.back, Time.deltaTime * rotationSpeed);
+        transform.Rotate(Vector3.back, Time.deltaTime * maxRotationSpeed / 5);
     }
     void Update()
     {
@@ -84,7 +87,7 @@ public class Turrets : MonoBehaviour
     }
     private void StartFiring()
     {
-        if(!isFiring)
+        if(!isFiring && !isRotating)
         {
             isFiring = true;
             fireTurret = StartCoroutine(FireWithDelay());
