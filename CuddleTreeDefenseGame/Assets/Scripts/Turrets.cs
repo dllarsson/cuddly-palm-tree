@@ -55,7 +55,6 @@ public class Turrets : MonoBehaviour
                 }
             }
         }
-        Debug.Log(nearestTarget);
         if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
         {
             RotateToTarget(nearestTarget.gameObject);
