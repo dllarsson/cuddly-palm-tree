@@ -13,15 +13,12 @@ public class EnemyDragon : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-
-
         if (Hp <= 0)
         {
             isDead = true;
             kill();
         }
         
-        Debug.Log(Target.transform.position);
         Vector3 _towerPosition = Target.transform.position;
         float step = 0.5f * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _towerPosition, step);
