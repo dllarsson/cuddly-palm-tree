@@ -9,26 +9,41 @@ public class Turrets : MonoBehaviour
     [SerializeField] float fireRate = 2f;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float maxTurretRange = 10f; //Collider radius
+    [SerializeField] float maxRotationSpeed = 100f;
 
     float minTurretRange;
     bool isFiring = false;
     Coroutine fireTurret;
+    bool isRotating = false;
 
     private void Start()
     {
         minTurretRange = GetComponent<SpriteRenderer>().bounds.extents.y * 2;
-        //target = FindObjectOfType<EnemyDragon>();
     }
 
     void RotateToTarget(GameObject target)
     {
-        //Vector3 vectorToTarget = target.transform.position - transform.position;
-        //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-        //angle -= 90; // we need to apply a offset since we want the tip of the cannon to point at the target.
+        var startRotation = transform.rotation;
+        var endRotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 0) * (target.transform.position - transform.position).normalized);
 
-        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 0) * (target.transform.position - transform.position).normalized);
+        if(!isRotating)
+        {
+            isRotating = true;
+            var angle = Quaternion.Angle(startRotation, endRotation);
+            StartCoroutine(RotateOverTime(startRotation, endRotation, angle / maxRotationSpeed));
+        }
+    }
+    IEnumerator RotateOverTime(Quaternion start, Quaternion end, float speed)
+    {
+        var time = 0f;
+        while(time < speed)
+        {
+            transform.rotation = Quaternion.Slerp(start, end, time / speed);
+            yield return null;
+            time += Time.deltaTime;
+        }
+        transform.rotation = end;
+        isRotating = false;
     }
 
     void ScanForTarget()
@@ -37,9 +52,19 @@ public class Turrets : MonoBehaviour
     }
     void Update()
     {
-        SearchForEnemies();
+        var nearestTarget = FindNearestTarget();
+        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
+        {
+            RotateToTarget(nearestTarget.gameObject);
+            StartFiring();
+        }
+        else
+        {
+            StopFiring();
+            ScanForTarget();
+        }
     }
-    private void SearchForEnemies()
+    private Collider2D FindNearestTarget()
     {
         float nearest = Mathf.Infinity;
         Collider2D nearestTarget = null;
@@ -55,16 +80,7 @@ public class Turrets : MonoBehaviour
                 }
             }
         }
-        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
-        {
-            RotateToTarget(nearestTarget.gameObject);
-            StartFiring();
-        }
-        else
-        {
-            StopFiring();
-            ScanForTarget();
-        }
+        return nearestTarget;
     }
     private void StartFiring()
     {
