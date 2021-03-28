@@ -8,15 +8,13 @@ public class EnemyDragon : MonoBehaviour
     [SerializeField] GameObject Target;
 
     [SerializeField] public float Hp = 100;
-    bool isDead = false;
 
     // Update is called once per frame
     void Update() 
     {
         if (Hp <= 0)
         {
-            isDead = true;
-            kill();
+            Kill();
         }
         
         Vector3 _towerPosition = Target.transform.position;
@@ -25,13 +23,13 @@ public class EnemyDragon : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Hp -= 10f;
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         Hp -= 0.5f;
     }
-    private void kill()
+    private void Kill()
     {
         // Do kill animation here
         Destroy(gameObject);

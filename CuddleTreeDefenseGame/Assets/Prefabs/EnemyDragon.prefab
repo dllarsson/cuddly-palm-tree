@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 5342629267738303368, guid: aba5e8b8e84182740b7d3e35cd423d0a, type: 3}
-  Hp: 1
+  Hp: 100
 --- !u!95 &2118125103843730938
 Animator:
   serializedVersion: 3
