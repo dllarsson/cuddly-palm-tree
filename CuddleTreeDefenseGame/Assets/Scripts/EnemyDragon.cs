@@ -5,35 +5,59 @@ using UnityEngine;
 
 public class EnemyDragon : MonoBehaviour
 {
-    [SerializeField] GameObject Target;
 
     [SerializeField] public float Hp = 100;
-    bool isDead = false;
 
+    Collider2D target;
+    bool hasTarget = false;
+
+    private void Start()
+    {
+        target = FindNearestTarget();
+    }
     // Update is called once per frame
-    void Update() 
+    void Update()
     {
         if (Hp <= 0)
         {
-            isDead = true;
-            kill();
+            Kill();
         }
-        
-        Vector3 _towerPosition = Target.transform.position;
         float step = 0.5f * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, _towerPosition, step);
+
+        if (hasTarget)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        }
+        else
+        {
+            target = FindNearestTarget();
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Hp -= 10f;
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         Hp -= 0.5f;
     }
-    private void kill()
+    private void Kill()
     {
         // Do kill animation here
         Destroy(gameObject);
+    }
+
+    private Collider2D FindNearestTarget()
+    {
+        Collider2D nearestTarget = null;
+        foreach (var target in Physics2D.OverlapCircleAll(transform.position, Mathf.Infinity))
+        {
+            if (target != null && target.gameObject.CompareTag("Tower"))
+            {
+                nearestTarget = target;
+            }
+        }
+        if (nearestTarget != null) hasTarget = true;
+        return nearestTarget;
     }
 }
