@@ -13,8 +13,10 @@ public class Turret : MonoBehaviour
 
     float minTurretRange;
     bool isFiring = false;
-    Coroutine fireTurret;
     bool isRotating = false;
+    bool reloaded = true;
+    Coroutine fireTurret;
+   
 
     private void Start()
     {
@@ -71,7 +73,7 @@ public class Turret : MonoBehaviour
         if(!isFiring && !isRotating)
         {
             isFiring = true;
-            fireTurret = StartCoroutine(FireWithDelay());
+            fireTurret = StartCoroutine(ContinousFire());
         }
     }
     private void StopFiring()
@@ -82,16 +84,23 @@ public class Turret : MonoBehaviour
             StopCoroutine(fireTurret);
         }
     }
-    IEnumerator FireWithDelay()
+    IEnumerator ContinousFire()
     {
         while(true)
         {
+            yield return new WaitWhile(() => reloaded == false);
             var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
             FireProjectileEffect();
             Destroy(projectile, 10f);
-            yield return new WaitForSeconds(fireRate);
+            StartCoroutine(ReloadTime());
         }
+    }
+    IEnumerator ReloadTime()
+    {
+        reloaded = false;
+        yield return new WaitForSeconds(fireRate);
+        reloaded = true;
     }
     private void FireProjectileEffect()
     {
