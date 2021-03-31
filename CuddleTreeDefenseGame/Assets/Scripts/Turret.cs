@@ -19,7 +19,20 @@ public class Turrets : MonoBehaviour
     {
         minTurretRange = GetComponent<SpriteRenderer>().bounds.extents.y * 2;
     }
-
+    void Update()
+    {
+        var nearestTarget = Tools.FindNearestTarget(transform.position, "Enemy", minTurretRange, maxTurretRange);
+        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
+        {
+            RotateToTarget(nearestTarget.gameObject);
+            StartFiring();
+        }
+        else
+        {
+            StopFiring();
+            ScanForTarget();
+        }
+    }
     void RotateToTarget(GameObject target)
     {
         var startRotation = transform.rotation;
@@ -48,24 +61,9 @@ public class Turrets : MonoBehaviour
         transform.rotation = end;
         isRotating = false;
     }
-
     void ScanForTarget()
     {
         transform.Rotate(Vector3.back, Time.deltaTime * maxRotationSpeed / 5);
-    }
-    void Update()
-    {
-        var nearestTarget = Tools.FindNearestTarget(transform.position, "Enemy", minTurretRange, maxTurretRange);
-        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
-        {
-            RotateToTarget(nearestTarget.gameObject);
-            StartFiring();
-        }
-        else
-        {
-            StopFiring();
-            ScanForTarget();
-        }
     }
     private void StartFiring()
     {
@@ -83,7 +81,6 @@ public class Turrets : MonoBehaviour
             StopCoroutine(fireTurret);
         }
     }
-
     IEnumerator FireWithDelay()
     {
         while(true)
