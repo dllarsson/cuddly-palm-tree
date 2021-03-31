@@ -55,7 +55,7 @@ public class Turrets : MonoBehaviour
     }
     void Update()
     {
-        var nearestTarget = FindNearestTarget();
+        var nearestTarget = Tools.FindNearestTarget(transform.position, "Enemy", minTurretRange, maxTurretRange);
         if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
         {
             RotateToTarget(nearestTarget.gameObject);
@@ -66,24 +66,6 @@ public class Turrets : MonoBehaviour
             StopFiring();
             ScanForTarget();
         }
-    }
-    private Collider2D FindNearestTarget()
-    {
-        float nearest = Mathf.Infinity;
-        Collider2D nearestTarget = null;
-        foreach(var target in Physics2D.OverlapCircleAll(transform.position, maxTurretRange))
-        {
-            if(target.gameObject.CompareTag("Enemy"))
-            {
-                float inRange = Vector2.Distance(target.transform.position, transform.position);
-                if(inRange < nearest && inRange > minTurretRange)
-                {
-                    nearest = inRange;
-                    nearestTarget = target;
-                }
-            }
-        }
-        return nearestTarget;
     }
     private void StartFiring()
     {
