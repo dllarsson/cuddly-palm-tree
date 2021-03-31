@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class Turrets : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] Transform fireOrigin;
     [SerializeField] float fireRate = 2f;
     [SerializeField] float projectileSpeed = 10f;
@@ -87,8 +88,16 @@ public class Turrets : MonoBehaviour
         {
             var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
+            FireProjectileEffect();
             Destroy(projectile, 10f);
             yield return new WaitForSeconds(fireRate);
         }
+    }
+    private void FireProjectileEffect()
+    {
+        var muzzleFlash = Instantiate(muzzleFlashPrefab, fireOrigin.position, fireOrigin.rotation);
+        var size = Random.Range(0.3f, 0.5f);
+        muzzleFlash.transform.localScale = new Vector3(size, size, size);
+        Destroy(muzzleFlash, 1.0f);
     }
 }

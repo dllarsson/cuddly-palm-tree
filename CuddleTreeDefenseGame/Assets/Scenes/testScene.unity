@@ -673,6 +673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343975761878982041, guid: 22aa629a6582af34ab79eff06edd7401, type: 3}
+      propertyPath: muzzleFlashPrefab
+      value: 
+      objectReference: {fileID: 5129263147653250981, guid: 8e596d127df3cee42afa4c1ae2ab1a36, type: 3}
     - target: {fileID: 343975762028986930, guid: 22aa629a6582af34ab79eff06edd7401, type: 3}
       propertyPath: m_Name
       value: BasicTurret
