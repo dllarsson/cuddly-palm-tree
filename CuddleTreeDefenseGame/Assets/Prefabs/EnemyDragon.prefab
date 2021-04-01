@@ -444,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6979678275d5e094aa047ce9bba071f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 343975762028986930, guid: 22aa629a6582af34ab79eff06edd7401, type: 3}
   Hp: 100
 --- !u!95 &828456214206647297
 Animator:
@@ -501,4 +500,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.1

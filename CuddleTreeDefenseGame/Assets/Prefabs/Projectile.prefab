@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c762f7186be8ddb4b8846ba59d5baaa2, type: 3}
+  m_Sprite: {fileID: -1083457699614811302, guid: b2629b950d120184e8536731649b813c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a3253e471defb4ebae9bc47eddc53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSprite: {fileID: 9169112075900887908, guid: dc479b0b489a69c4c8e6bc93e2dd9b00, type: 3}
+  deathEffect: {fileID: 1434627103891488, guid: 52d340ed9c2714c4f8aabf1f82df1b58, type: 3}
