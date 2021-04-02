@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class Turret : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class Turret : MonoBehaviour
 
     float minTurretRange;
     bool isFiring = false;
-    Coroutine fireTurret;
     bool isRotating = false;
+    bool isReloaded = true;
+    Coroutine fireTurret;
+   
 
     private void Start()
     {
@@ -71,7 +74,7 @@ public class Turret : MonoBehaviour
         if(!isFiring && !isRotating)
         {
             isFiring = true;
-            fireTurret = StartCoroutine(FireWithDelay());
+            fireTurret = StartCoroutine(ContinousFire());
         }
     }
     private void StopFiring()
@@ -82,16 +85,23 @@ public class Turret : MonoBehaviour
             StopCoroutine(fireTurret);
         }
     }
-    IEnumerator FireWithDelay()
+    IEnumerator ContinousFire()
     {
         while(true)
         {
+            yield return new WaitWhile(() => isReloaded == false);
             var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
             FireProjectileEffect();
             Destroy(projectile, 10f);
-            yield return new WaitForSeconds(fireRate);
+            StartCoroutine(ReloadTime());
         }
+    }
+    IEnumerator ReloadTime()
+    {
+        isReloaded = false;
+        yield return new WaitForSeconds(fireRate);
+        isReloaded = true;
     }
     private void FireProjectileEffect()
     {
@@ -99,5 +109,10 @@ public class Turret : MonoBehaviour
         var size = Random.Range(0.3f, 0.5f);
         muzzleFlash.transform.localScale = new Vector3(size, size, size);
         Destroy(muzzleFlash, 1.0f);
+    }
+    private void OnDestroy()
+    {
+        //cleanup
+        StopAllCoroutines();
     }
 }
