@@ -33,9 +33,9 @@ public static class Tools
     }
     public static GameObject[] GetChildren(GameObject parent)
     {
-        var count = parent.transform.childCount;
+        int count = parent.transform.childCount;
         var children = new GameObject[count];
-        for(var i = 0; i < count; i++)
+        for(int i = 0; i < count; i++)
         {
             children[i] = parent.transform.GetChild(i).gameObject;
         }
@@ -43,16 +43,15 @@ public static class Tools
     }
     public static Collider2D FindNearestTarget(GameObject originPosition, string tag, float minTurretRange, float maxTurretRange)
     {
-        float? nearest = Mathf.Infinity;
         Collider2D nearestTarget = null;
         foreach(var target in Physics2D.OverlapCircleAll(originPosition.transform.position, maxTurretRange))
         {
             if(target.gameObject.CompareTag(tag))
             {
-                var inRange = IsInRange(originPosition, target.gameObject, minTurretRange, maxTurretRange);
+                float? inRange = IsInRange(originPosition, target.gameObject, minTurretRange, maxTurretRange);
                 if(inRange != null)
                 {
-                    nearest = inRange;
+                    float? nearest = inRange;
                     nearestTarget = target;
                 }
             }

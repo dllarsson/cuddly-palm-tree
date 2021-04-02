@@ -6,8 +6,8 @@ public class Turret : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject muzzleFlashPrefab;
-    [SerializeField] Transform fireOrigin;
     [Header("Settings")]
+    [SerializeField] Transform fireOrigin;
     [SerializeField] float fireRate = 2f;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float maxTurretRange = 10f; //Collider radius
@@ -23,7 +23,8 @@ public class Turret : MonoBehaviour
     Coroutine fireRoutine;
     Coroutine scanRoutine;
     GameObject target = null;
-   
+
+    public float MaxTurretRange { get => maxTurretRange; set => maxTurretRange = value; }
 
     private void Start()
     {
@@ -39,11 +40,10 @@ public class Turret : MonoBehaviour
         }
         while(target == null)
         {
-            var nearestTarget = Tools.FindNearestTarget(gameObject, "Enemy", minTurretRange, maxTurretRange);
+            var nearestTarget = Tools.FindNearestTarget(gameObject, "Enemy", minTurretRange, MaxTurretRange);
             if(nearestTarget != null)
             {
                 target = nearestTarget.gameObject;
-                yield return null;
                 StopCoroutine(scanRoutine);
                 isScanning = false;
                 StartCoroutine(LockOnTarget());
@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour
     {
         while(true)
         {
-            if(Tools.IsInRange(gameObject, target, minTurretRange, maxTurretRange) != null
+            if(Tools.IsInRange(gameObject, target, minTurretRange, MaxTurretRange) != null
                 && target != null)
             {
                 var targetAcquired = StartCoroutine(RotateToTarget(target));
@@ -82,24 +82,22 @@ public class Turret : MonoBehaviour
     }
     IEnumerator RotateToTarget(GameObject target)
     {
+        isRotating = true;
         var startRotation = transform.rotation;
         var endRotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 0) * (target.transform.position - transform.position).normalized);
-        var angle = Quaternion.Angle(startRotation, endRotation);
-        yield return StartCoroutine(RotateOverTime(startRotation, endRotation, angle / maxRotationSpeed));
-    }
-    IEnumerator RotateOverTime(Quaternion start, Quaternion end, float speed)
-    {
-        isRotating = true;
-        var time = 0f;
+        float angle = Quaternion.Angle(startRotation, endRotation);
+        float speed = angle / maxRotationSpeed;
+        float time = 0f;
         while(time < speed)
         {
-            transform.rotation = Quaternion.Slerp(start, end, time / speed);
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, time / speed);
             yield return null;
             time += Time.deltaTime;
         }
-        transform.rotation = end;
+        transform.rotation = endRotation;
         isRotating = false;
     }
+
     private void StartFiring()
     {
         if(!isFiring)
@@ -139,7 +137,7 @@ public class Turret : MonoBehaviour
     private void FireProjectileEffect()
     {
         var muzzleFlash = Instantiate(muzzleFlashPrefab, fireOrigin.position, fireOrigin.rotation);
-        var size = Random.Range(0.3f, 0.5f);
+        float size = Random.Range(0.3f, 0.5f);
         muzzleFlash.transform.localScale = new Vector3(size, size, size);
         Destroy(muzzleFlash, 1.0f);
     }

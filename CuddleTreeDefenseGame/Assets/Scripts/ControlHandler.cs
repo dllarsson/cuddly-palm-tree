@@ -14,6 +14,7 @@ public class ControlHandler : MonoBehaviour
         {
             isTPressed = true;
             obj = Instantiate(buildPrefabWithButtonT);
+            obj.GetComponent<Tower>().IsPlaced = false;
             Tools.SetColorOnGameObject(obj, new Color(1, 1, 1, 0.25f));
             Tools.ToggleScriptsInGameObject(obj, false);
             myCoroutine = StartCoroutine(FollowMouse(obj));
@@ -24,6 +25,7 @@ public class ControlHandler : MonoBehaviour
             StopCoroutine(myCoroutine);
             Tools.SetColorOnGameObject(obj, new Color(1, 1, 1, 1));
             Tools.ToggleScriptsInGameObject(obj, true);
+            obj.GetComponent<Tower>().IsPlaced = true;
         }
 
     }
