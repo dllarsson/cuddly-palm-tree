@@ -41,16 +41,16 @@ public static class Tools
         }
         return children;
     }
-    public static Collider2D FindNearestTarget(Vector2 originPosition, string tag, float minTurretRange, float maxTurretRange)
+    public static Collider2D FindNearestTarget(GameObject originPosition, string tag, float minTurretRange, float maxTurretRange)
     {
-        var nearest = Mathf.Infinity;
+        float? nearest = Mathf.Infinity;
         Collider2D nearestTarget = null;
-        foreach(var target in Physics2D.OverlapCircleAll(originPosition, maxTurretRange))
+        foreach(var target in Physics2D.OverlapCircleAll(originPosition.transform.position, maxTurretRange))
         {
             if(target.gameObject.CompareTag(tag))
             {
-                var inRange = Vector2.Distance(target.transform.position, originPosition);
-                if(inRange < nearest && inRange > minTurretRange)
+                var inRange = IsInRange(originPosition, target.gameObject, minTurretRange, maxTurretRange);
+                if(inRange != null)
                 {
                     nearest = inRange;
                     nearestTarget = target;
@@ -58,5 +58,14 @@ public static class Tools
             }
         }
         return nearestTarget;
+    }
+    public static float? IsInRange(GameObject originObject, GameObject targetObject, float minRange, float maxRange)
+    {
+        if(originObject != null && targetObject != null)
+        {
+            float? range = Vector2.Distance(targetObject.transform.position, originObject.transform.position);
+            return (range < maxRange && range > minRange) ? range : null;
+        }
+        return null;
     }
 }

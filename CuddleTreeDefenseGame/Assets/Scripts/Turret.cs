@@ -1,60 +1,95 @@
 using UnityEngine;
 using System.Collections;
-using System.Threading.Tasks;
 
 public class Turret : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] Transform fireOrigin;
+    [Header("Settings")]
     [SerializeField] float fireRate = 2f;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float maxTurretRange = 10f; //Collider radius
     [SerializeField] float maxRotationSpeed = 100f;
+    [Header("Advanced Settings")]
+    [SerializeField] float scanInterval = 0.5f;
 
     float minTurretRange;
     bool isFiring = false;
     bool isRotating = false;
     bool isReloaded = true;
-    Coroutine fireTurret;
+    bool isScanning = false;
+    Coroutine fireRoutine;
+    Coroutine scanRoutine;
+    GameObject target = null;
    
 
     private void Start()
     {
         minTurretRange = GetComponent<SpriteRenderer>().bounds.extents.y * 2;
+        StartCoroutine(PeriodicallyScanForTarget());
     }
-    void Update()
+    IEnumerator PeriodicallyScanForTarget()
     {
-        var nearestTarget = Tools.FindNearestTarget(transform.position, "Enemy", minTurretRange, maxTurretRange);
-        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
+        if(!isScanning)
         {
-            RotateToTarget(nearestTarget.gameObject);
-            StartFiring();
+            isScanning = true;
+            scanRoutine = StartCoroutine(ScanForTarget());
         }
-        else
+        while(target == null)
         {
-            StopFiring();
-            ScanForTarget();
+            var nearestTarget = Tools.FindNearestTarget(gameObject, "Enemy", minTurretRange, maxTurretRange);
+            if(nearestTarget != null)
+            {
+                target = nearestTarget.gameObject;
+                yield return null;
+                StopCoroutine(scanRoutine);
+                isScanning = false;
+                StartCoroutine(LockOnTarget());
+                yield break;
+            }
+            yield return new WaitForSeconds(scanInterval);
         }
     }
-    void RotateToTarget(GameObject target)
+    IEnumerator ScanForTarget()
+    {
+        while(true)
+        {
+            transform.Rotate(Vector3.back, Time.deltaTime * maxRotationSpeed / 5);
+            yield return null;
+        }
+    }
+    IEnumerator LockOnTarget()
+    {
+        while(true)
+        {
+            if(Tools.IsInRange(gameObject, target, minTurretRange, maxTurretRange) != null
+                && target != null)
+            {
+                var targetAcquired = StartCoroutine(RotateToTarget(target));
+                yield return targetAcquired;
+                StartFiring();
+            }
+            else
+            {
+                target = null;
+                StopFiring();
+                StartCoroutine(PeriodicallyScanForTarget());
+                yield break;
+            }
+        }
+    }
+    IEnumerator RotateToTarget(GameObject target)
     {
         var startRotation = transform.rotation;
         var endRotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 0) * (target.transform.position - transform.position).normalized);
-
-        if(!isRotating)
-        {
-            isRotating = true;
-            var angle = Quaternion.Angle(startRotation, endRotation);
-            StartCoroutine(RotateOverTime(startRotation, endRotation, angle / maxRotationSpeed));
-        }
-        else
-        {
-            StopFiring();
-        }
+        var angle = Quaternion.Angle(startRotation, endRotation);
+        yield return StartCoroutine(RotateOverTime(startRotation, endRotation, angle / maxRotationSpeed));
     }
     IEnumerator RotateOverTime(Quaternion start, Quaternion end, float speed)
     {
+        isRotating = true;
         var time = 0f;
         while(time < speed)
         {
@@ -65,16 +100,12 @@ public class Turret : MonoBehaviour
         transform.rotation = end;
         isRotating = false;
     }
-    void ScanForTarget()
-    {
-        transform.Rotate(Vector3.back, Time.deltaTime * maxRotationSpeed / 5);
-    }
     private void StartFiring()
     {
-        if(!isFiring && !isRotating)
+        if(!isFiring)
         {
             isFiring = true;
-            fireTurret = StartCoroutine(ContinousFire());
+            fireRoutine = StartCoroutine(ContinousFire());
         }
     }
     private void StopFiring()
@@ -82,7 +113,7 @@ public class Turret : MonoBehaviour
         if(isFiring)
         {
             isFiring = false;
-            StopCoroutine(fireTurret);
+            StopCoroutine(fireRoutine);
         }
     }
     IEnumerator ContinousFire()
@@ -90,7 +121,9 @@ public class Turret : MonoBehaviour
         while(true)
         {
             yield return new WaitWhile(() => isReloaded == false);
-            var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
+            yield return new WaitWhile(() => isRotating == true);
+            if(!isFiring) yield break;
+            var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation);
             projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
             FireProjectileEffect();
             Destroy(projectile, 10f);

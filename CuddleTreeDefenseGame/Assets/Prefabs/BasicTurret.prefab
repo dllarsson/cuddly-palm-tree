@@ -103,6 +103,7 @@ MonoBehaviour:
   projectileSpeed: 10
   maxTurretRange: 10
   maxRotationSpeed: 100
+  scanInterval: 0.5
 --- !u!1 &343975762028986930
 GameObject:
   m_ObjectHideFlags: 0
