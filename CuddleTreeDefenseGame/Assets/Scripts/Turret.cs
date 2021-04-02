@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class Turrets : MonoBehaviour
+public class Turret : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] Transform fireOrigin;
     [SerializeField] float fireRate = 2f;
     [SerializeField] float projectileSpeed = 10f;
@@ -19,7 +20,20 @@ public class Turrets : MonoBehaviour
     {
         minTurretRange = GetComponent<SpriteRenderer>().bounds.extents.y * 2;
     }
-
+    void Update()
+    {
+        var nearestTarget = Tools.FindNearestTarget(transform.position, "Enemy", minTurretRange, maxTurretRange);
+        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
+        {
+            RotateToTarget(nearestTarget.gameObject);
+            StartFiring();
+        }
+        else
+        {
+            StopFiring();
+            ScanForTarget();
+        }
+    }
     void RotateToTarget(GameObject target)
     {
         var startRotation = transform.rotation;
@@ -48,42 +62,9 @@ public class Turrets : MonoBehaviour
         transform.rotation = end;
         isRotating = false;
     }
-
     void ScanForTarget()
     {
         transform.Rotate(Vector3.back, Time.deltaTime * maxRotationSpeed / 5);
-    }
-    void Update()
-    {
-        var nearestTarget = FindNearestTarget();
-        if(nearestTarget != null && nearestTarget.gameObject.CompareTag("Enemy"))
-        {
-            RotateToTarget(nearestTarget.gameObject);
-            StartFiring();
-        }
-        else
-        {
-            StopFiring();
-            ScanForTarget();
-        }
-    }
-    private Collider2D FindNearestTarget()
-    {
-        float nearest = Mathf.Infinity;
-        Collider2D nearestTarget = null;
-        foreach(var target in Physics2D.OverlapCircleAll(transform.position, maxTurretRange))
-        {
-            if(target.gameObject.CompareTag("Enemy"))
-            {
-                float inRange = Vector2.Distance(target.transform.position, transform.position);
-                if(inRange < nearest && inRange > minTurretRange)
-                {
-                    nearest = inRange;
-                    nearestTarget = target;
-                }
-            }
-        }
-        return nearestTarget;
     }
     private void StartFiring()
     {
@@ -101,15 +82,22 @@ public class Turrets : MonoBehaviour
             StopCoroutine(fireTurret);
         }
     }
-
     IEnumerator FireWithDelay()
     {
         while(true)
         {
             var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
+            FireProjectileEffect();
             Destroy(projectile, 10f);
             yield return new WaitForSeconds(fireRate);
         }
+    }
+    private void FireProjectileEffect()
+    {
+        var muzzleFlash = Instantiate(muzzleFlashPrefab, fireOrigin.position, fireOrigin.rotation);
+        var size = Random.Range(0.3f, 0.5f);
+        muzzleFlash.transform.localScale = new Vector3(size, size, size);
+        Destroy(muzzleFlash, 1.0f);
     }
 }

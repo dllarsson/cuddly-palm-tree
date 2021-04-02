@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3339689785915431126, guid: 3b62e3844e2e73243921043f2ac69307, type: 3}
+  muzzleFlashPrefab: {fileID: 5129263147653250981, guid: 8e596d127df3cee42afa4c1ae2ab1a36, type: 3}
   fireOrigin: {fileID: 7285069270644584073}
   fireRate: 2
   projectileSpeed: 10
