@@ -103,6 +103,7 @@ MonoBehaviour:
   projectileSpeed: 10
   maxTurretRange: 10
   maxRotationSpeed: 100
+  scanInterval: 0.5
 --- !u!1 &343975762028986930
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,8 +114,8 @@ GameObject:
   m_Component:
   - component: {fileID: 343975762028986935}
   - component: {fileID: 343975762028986928}
-  - component: {fileID: 343975762028986929}
   - component: {fileID: 343975762028986934}
+  - component: {fileID: 6164056178339601792}
   m_Layer: 0
   m_Name: BasicTurret
   m_TagString: Tower
@@ -188,7 +189,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &343975762028986929
+--- !u!114 &343975762028986934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975762028986930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e233bc36e009a734cabbe42ed48d6770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeIndicatorPrefab: {fileID: 7345115511824565745, guid: 91882d7e3417fab4fa2b5018da873a83, type: 3}
+--- !u!60 &6164056178339601792
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,31 +227,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.17, y: 0.52}
-      - {x: 0.52, y: 1.17}
-      - {x: -0.58, y: 1.17}
-      - {x: -0.71, y: 1.15}
-      - {x: -0.88, y: 1}
-      - {x: -1.16, y: 0.71}
-      - {x: -1.17, y: 0.68}
-      - {x: -1.17, y: -0.52}
-      - {x: -0.52, y: -1.17}
-      - {x: 0.61, y: -1.17}
-      - {x: 0.71999997, y: -1.16}
-      - {x: 0.75, y: -1.13}
-      - {x: 1.17, y: -0.74}
---- !u!114 &343975762028986934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343975762028986930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e233bc36e009a734cabbe42ed48d6770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    - - {x: 0.48, y: -1.12}
+      - {x: 1.12, y: -0.48}
+      - {x: 1.12, y: 0.48}
+      - {x: 0.48, y: 1.12}
+      - {x: -0.48, y: 1.12}
+      - {x: -1.12, y: 0.48}
+      - {x: -1.12, y: -0.48}
+      - {x: -0.48, y: -1.12}
 --- !u!1 &4616717965264650480
 GameObject:
   m_ObjectHideFlags: 0
