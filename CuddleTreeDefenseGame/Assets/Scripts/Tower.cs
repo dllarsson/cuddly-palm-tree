@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] GameObject rangeIndicatorPrefab;
+    [SerializeField] GameObject turret;
     GameObject rangeIndicatorObject;
     bool isEnabled = true;
 
@@ -49,5 +52,18 @@ public class Tower : MonoBehaviour
     private void OnDisable()
     {
         isEnabled = false;
+    }
+    private void Explode()
+    {
+        gameObject.GetComponent<DeathEffect>().Death = true;
+        turret.GetComponent<DeathEffect>().Death = true;
+    }
+
+    //DEBUG
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("asd");
+        if(eventData.button == PointerEventData.InputButton.Right)
+            Explode();
     }
 }

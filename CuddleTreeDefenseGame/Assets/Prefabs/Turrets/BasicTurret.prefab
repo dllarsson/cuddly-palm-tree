@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 343975761878982042}
   - component: {fileID: 343975761878982043}
   - component: {fileID: 343975761878982041}
+  - component: {fileID: 2008560595547567857}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -104,6 +105,22 @@ MonoBehaviour:
   maxTurretRange: 10
   maxRotationSpeed: 100
   scanInterval: 0.5
+--- !u!114 &2008560595547567857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975761878982036}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d0b7e7484087040bd1cf681b700838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSprite: {fileID: 9169112075900887908, guid: 005ec6cb1f16b444a9a0742a551f56e7, type: 3}
+  deathEffect: {fileID: 1434627103891488, guid: 52d340ed9c2714c4f8aabf1f82df1b58, type: 3}
+  delay: {x: 0, y: 0}
+  death: 0
 --- !u!1 &343975762028986930
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,8 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 343975762028986935}
-  - component: {fileID: 343975762028986928}
   - component: {fileID: 343975762028986934}
+  - component: {fileID: -5875509142012793149}
+  - component: {fileID: 343975762028986928}
   - component: {fileID: 6164056178339601792}
   m_Layer: 0
   m_Name: BasicTurret
@@ -138,6 +156,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343975762028986934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975762028986930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e233bc36e009a734cabbe42ed48d6770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeIndicatorPrefab: {fileID: 7345115511824565745, guid: 91882d7e3417fab4fa2b5018da873a83, type: 3}
+  turret: {fileID: 343975761878982036}
+--- !u!114 &-5875509142012793149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975762028986930}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d0b7e7484087040bd1cf681b700838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSprite: {fileID: 9169112075900887908, guid: 2c82777b91421fc4fb7ccb95f929cbc9, type: 3}
+  deathEffect: {fileID: 1434627103891488, guid: 52d340ed9c2714c4f8aabf1f82df1b58, type: 3}
+  delay: {x: 0.2, y: 0.25}
+  death: 0
 --- !u!212 &343975762028986928
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0ac58db542243b74eb97b984555e1b95, type: 3}
+  m_Sprite: {fileID: -6988266060121028069, guid: 15d69ac1c42f7e048a1e0543fa3a728b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,19 +237,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &343975762028986934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343975762028986930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e233bc36e009a734cabbe42ed48d6770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeIndicatorPrefab: {fileID: 7345115511824565745, guid: 91882d7e3417fab4fa2b5018da873a83, type: 3}
 --- !u!60 &6164056178339601792
 PolygonCollider2D:
   m_ObjectHideFlags: 0

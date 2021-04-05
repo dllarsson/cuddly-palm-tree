@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class autoDestroy : MonoBehaviour
+public class AutoDestroy : MonoBehaviour
 {
     [SerializeField] float destroyInSeconds = 5;
     void Start()

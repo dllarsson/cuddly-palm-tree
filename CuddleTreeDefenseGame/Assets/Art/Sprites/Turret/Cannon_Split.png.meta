@@ -1,0 +1,924 @@
+fileFormatVersion: 2
+guid: 16a0669fb27e9fc4ca0162510f046ae5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1598552703116398040
+    second: Cannon_Split_0
+  - first:
+      213: -7029031277905745501
+    second: Cannon_Split_1
+  - first:
+      213: 694807628535991442
+    second: Cannon_Split_2
+  - first:
+      213: -4710229010347374630
+    second: Cannon_Split_3
+  - first:
+      213: -5361348380533946827
+    second: Cannon_Split_4
+  - first:
+      213: 452392602551541268
+    second: Cannon_Split_5
+  - first:
+      213: -553436121355177945
+    second: Cannon_Split_6
+  - first:
+      213: -5042908219894931298
+    second: Cannon_Split_7
+  - first:
+      213: -2818913685440388410
+    second: Cannon_Split_8
+  - first:
+      213: -7965424819449982238
+    second: Cannon_Split_9
+  - first:
+      213: -8382546781098629943
+    second: Cannon_Split_10
+  - first:
+      213: -3604311048038026355
+    second: Cannon_Split_11
+  - first:
+      213: -1425658768464734649
+    second: Cannon_Split_12
+  - first:
+      213: -3077561716597020351
+    second: Cannon_Split_13
+  - first:
+      213: -2924431226095082823
+    second: Cannon_Split_14
+  - first:
+      213: -8255586279903235344
+    second: Cannon_Split_15
+  - first:
+      213: 8963698987069838899
+    second: Cannon_Split_16
+  - first:
+      213: -8782143206454075987
+    second: Cannon_Split_17
+  - first:
+      213: 6301688554436932330
+    second: Cannon_Split_18
+  - first:
+      213: 4301184215234908681
+    second: Cannon_Split_19
+  - first:
+      213: -8113337062125525650
+    second: Cannon_Split_20
+  - first:
+      213: -2620013568571932908
+    second: Cannon_Split_21
+  - first:
+      213: 6523814807802973035
+    second: Cannon_Split_22
+  - first:
+      213: 6330510028668199711
+    second: Cannon_Split_23
+  - first:
+      213: 63682128603704375
+    second: Cannon_Split_24
+  - first:
+      213: -1214414683724939630
+    second: Cannon_Split_25
+  - first:
+      213: -8048149633854436147
+    second: Cannon_Split_26
+  - first:
+      213: -4991652419229524194
+    second: Cannon_Split_27
+  - first:
+      213: -6930377637261440868
+    second: Cannon_Split_28
+  - first:
+      213: 6502427386673342247
+    second: Cannon_Split_29
+  - first:
+      213: 4103622146031003836
+    second: Cannon_Split_30
+  - first:
+      213: -6144836431140648218
+    second: Cannon_Split_31
+  - first:
+      213: -3457268621846602110
+    second: Cannon_Split_32
+  - first:
+      213: 4241013136313483638
+    second: Cannon_Split_33
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cannon_Split_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 190
+        width: 139
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822b10839ccc0d9e0800000000000000
+      internalID: -1598552703116398040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_1
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 312
+        width: 77
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9615d4b4dd37e90800000000000000
+      internalID: -7029031277905745501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_2
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 304
+        width: 66
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c8e1e5bd374a900800000000000000
+      internalID: 694807628535991442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_3
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 377
+        width: 38
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad74183cba7e1aeb0800000000000000
+      internalID: -4710229010347374630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_4
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 277
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5368825bd0aa895b0800000000000000
+      internalID: -5361348380533946827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_5
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 265
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e5916dca8374600800000000000000
+      internalID: 452392602551541268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_6
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 272
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72031c4a7ccc158f0800000000000000
+      internalID: -553436121355177945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_7
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 211
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e90e34641bdf30ab0800000000000000
+      internalID: -5042908219894931298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_8
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 207
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2a6d630f431e8d0800000000000000
+      internalID: -2818913685440388410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_9
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 202
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e29a9f4450257190800000000000000
+      internalID: -7965424819449982238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_10
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 203
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4a58f7d163bab80800000000000000
+      internalID: -8382546781098629943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 148
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d837da1c23aeafdc0800000000000000
+      internalID: -3604311048038026355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 71
+        width: 43
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7461dbe47ea073ce0800000000000000
+      internalID: -1425658768464734649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_13
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 133
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149a4e3aced4a45d0800000000000000
+      internalID: -3077561716597020351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_14
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 129
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2ea8e4b455a67d0800000000000000
+      internalID: -2924431226095082823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 149
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f277c5b4044e6d80800000000000000
+      internalID: -8255586279903235344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_16
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 147
+        width: 44
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33693ddacb4756c70800000000000000
+      internalID: 8963698987069838899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_17
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 135
+        width: 40
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dadd1b4984f8f1680800000000000000
+      internalID: -8782143206454075987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_18
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 143
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2bb5c3a58147750800000000000000
+      internalID: 6301688554436932330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_19
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 113
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902189e4140e0bb30800000000000000
+      internalID: 4301184215234908681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_20
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 77
+        width: 40
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e652ff4ade2a76f80800000000000000
+      internalID: -8113337062125525650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_21
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 101
+        width: 49
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ff0927a87d3abd0800000000000000
+      internalID: -2620013568571932908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_22
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 93
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b8787c00f398a50800000000000000
+      internalID: 6523814807802973035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_23
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 99
+        width: 45
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f13e0d1a45d7ad750800000000000000
+      internalID: 6330510028668199711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_24
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 75
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ce6fdfe8e32e000800000000000000
+      internalID: 63682128603704375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 56
+        width: 46
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e7e868748852fe0800000000000000
+      internalID: -1214414683724939630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_26
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 57
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc8ae68c8a3f4090800000000000000
+      internalID: -8048149633854436147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_27
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 50
+        width: 43
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fda9552961abab0800000000000000
+      internalID: -4991652419229524194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_28
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 7
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9888b3f14a52df90800000000000000
+      internalID: -6930377637261440868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_29
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 7
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727af60c1434d3a50800000000000000
+      internalID: 6502427386673342247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_30
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 7
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8aa92999ef2f830800000000000000
+      internalID: 4103622146031003836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_31
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 16
+        width: 40
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea8bf692d729baa0800000000000000
+      internalID: -6144836431140648218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_32
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 98
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e9abd71805500d0800000000000000
+      internalID: -3457268621846602110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cannon_Split_33
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 6
+        width: 33
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6710bb54afa1bda30800000000000000
+      internalID: 4241013136313483638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
