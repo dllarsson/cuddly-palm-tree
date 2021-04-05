@@ -15,7 +15,6 @@ public class SpawnHandler : MonoBehaviour
     void CreateGhostBuilding(GameObject buildingPrefab)
     {
         createdAsset = Instantiate(buildingPrefab);
-        createdAsset.GetComponent<Tower>().IsPlaced = false;
         Tools.SetColorOnGameObject(createdAsset, new Color(1, 1, 1, 0.25f));
         Tools.ToggleScriptsInGameObject(createdAsset, false);
         buildingPlacementRoutine = StartCoroutine(FollowMouse(createdAsset));
@@ -29,7 +28,6 @@ public class SpawnHandler : MonoBehaviour
             StopCoroutine(buildingPlacementRoutine);
             Tools.SetColorOnGameObject(createdAsset, new Color(1, 1, 1, 1));
             Tools.ToggleScriptsInGameObject(createdAsset, true);
-            createdAsset.GetComponent<Tower>().IsPlaced = true;
         }
     }
     IEnumerator FollowMouse(GameObject src)

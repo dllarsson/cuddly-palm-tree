@@ -6,7 +6,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] GameObject rangeIndicatorPrefab;
     GameObject rangeIndicatorObject;
-    public bool IsPlaced { get; set; } = true;
+    bool isEnabled = true;
 
     private void OnMouseDown()
     {
@@ -14,7 +14,8 @@ public class Tower : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        if(IsPlaced && rangeIndicatorObject == null)
+
+        if(isEnabled && rangeIndicatorObject == null)
         {
             rangeIndicatorObject = Instantiate(rangeIndicatorPrefab, transform.position, transform.rotation);
             rangeIndicatorObject.transform.parent = gameObject.transform;
@@ -24,7 +25,7 @@ public class Tower : MonoBehaviour
     }
     private void OnMouseExit()
     {
-        if(IsPlaced && rangeIndicatorObject != null)
+        if(isEnabled && rangeIndicatorObject != null)
         {
             Destroy(rangeIndicatorObject);
             rangeIndicatorObject = null;
@@ -40,5 +41,13 @@ public class Tower : MonoBehaviour
     {
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(newPos.x, newPos.y);
+    }
+    private void OnEnable()
+    {
+        isEnabled = true;
+    }
+    private void OnDisable()
+    {
+        isEnabled = false;
     }
 }
