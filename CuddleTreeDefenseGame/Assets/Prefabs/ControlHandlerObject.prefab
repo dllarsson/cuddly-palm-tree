@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1432669168273420691}
   - component: {fileID: 1432669168273420690}
+  - component: {fileID: 774473345}
+  - component: {fileID: 774473344}
   m_Layer: 0
   m_Name: ControlHandlerObject
   m_TagString: Untagged
@@ -43,4 +45,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6716409ea0ac2c94cbf9e33fe3cbe34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildPrefabWithButtonT: {fileID: 343975762028986930, guid: 22aa629a6582af34ab79eff06edd7401, type: 3}
+  placeMouseButton: 0
+--- !u!114 &774473345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432669168273420688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af058c09b6c234748be55e4c239d5b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &774473344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432669168273420688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0374d383cc5d0d04d9f9e8e4ec034f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
