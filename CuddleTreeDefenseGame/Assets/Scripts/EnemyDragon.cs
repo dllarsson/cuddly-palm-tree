@@ -35,7 +35,14 @@ public class EnemyDragon : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Hp -= 10f;
+        if(collision.gameObject.tag == "Ghost" || collision.gameObject.tag == "Enemy")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+        else
+        {
+            Hp -= 10f;
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
