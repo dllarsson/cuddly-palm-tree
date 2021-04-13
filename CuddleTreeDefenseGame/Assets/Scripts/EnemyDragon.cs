@@ -3,25 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDragon : MonoBehaviour
+public class EnemyDragon : MonoBehaviour, IHealthHandler
 {
 
-    [SerializeField] public float Hp = 100;
+    [SerializeField] float health = 100;
 
     Collider2D target;
     bool hasTarget = false;
+    public float Health { get => health; set => health = value; }
 
     private void Start()
     {
         target = FindNearestTarget();
     }
-    // Update is called once per frame
     void Update()
     {
-        if (Hp <= 0)
-        {
-            Kill();
-        }
         float step = 0.5f * Time.deltaTime;
 
         if (hasTarget)
@@ -32,19 +28,6 @@ public class EnemyDragon : MonoBehaviour
         {
             target = FindNearestTarget();
         }
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Hp -= 10f;
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        Hp -= 0.5f;
-    }
-    private void Kill()
-    {
-        // Do kill animation here
-        Destroy(gameObject);
     }
 
     private Collider2D FindNearestTarget()
@@ -59,5 +42,17 @@ public class EnemyDragon : MonoBehaviour
         }
         if (nearestTarget != null) hasTarget = true;
         return nearestTarget;
+    }
+    public void OnDamage(float damage)
+    {
+        Health -= damage;
+        if(Health <= 0)
+        {
+            OnDeath();
+        }
+    }
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }

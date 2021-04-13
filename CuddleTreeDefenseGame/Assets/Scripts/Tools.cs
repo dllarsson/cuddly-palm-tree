@@ -67,4 +67,9 @@ public static class Tools
         }
         return null;
     }
+
+    public static string[] GameTags()
+    {
+        return UnityEditorInternal.InternalEditorUtility.tags;
+    }
 }

@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageDealer
 {
+    [SerializeField] float projectileDamage;
+    [Header("Effects")]
     [SerializeField] GameObject deathSprite;
     [SerializeField] GameObject deathEffect;
     [SerializeField] float deathDelay = 0.2f;
+
+    public List<string> TargetTag { get; set; } = new List<string>();
+    public float Damage { get => projectileDamage; set => projectileDamage = value; }
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Explode();
+        var target = collision.gameObject;
+        var targetHealth = target.GetComponent<IHealthHandler>();
+        if(targetHealth != null && TargetTag.Contains(target.tag))
+        {
+            targetHealth.OnDamage(Damage);
+        }
+        OnDeath();
     }
-    public void Explode()
+    public void OnDeath()
     {
         Instantiate(deathSprite, transform.position, transform.rotation);
         Instantiate(deathEffect, transform.position, transform.rotation);
