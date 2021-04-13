@@ -9,9 +9,10 @@ public class Projectile : MonoBehaviour, IDamageDealer
     [SerializeField] GameObject deathSprite;
     [SerializeField] GameObject deathEffect;
     [SerializeField] float deathDelay = 0.2f;
-    public List<string> TargetTag { get; set; }
-    public float Damage { get => projectileDamage; set => projectileDamage = value; }
 
+    public List<string> TargetTag { get; set; } = new List<string>();
+    public float Damage { get => projectileDamage; set => projectileDamage = value; }
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         var target = collision.gameObject;
