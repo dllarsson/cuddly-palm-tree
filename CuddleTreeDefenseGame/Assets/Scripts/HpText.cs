@@ -13,6 +13,6 @@ public class HpText : MonoBehaviour
     }
     void Update()
     {
-        hpTextMeshPro.text = transform.parent.parent.GetComponent<EnemyDragon>().Hp.ToString();
+        hpTextMeshPro.text = transform.parent.parent.GetComponent<IHealthHandler>().Health.ToString();
     }
 }
