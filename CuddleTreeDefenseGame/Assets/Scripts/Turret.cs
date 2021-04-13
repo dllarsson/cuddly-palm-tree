@@ -135,7 +135,7 @@ public class Turret : MonoBehaviour
     {
         var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation);
         projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
-        projectile.GetComponent<IDamageDealer>().TargetTag = target.tag;
+        projectile.GetComponent<IDamageDealer>().TargetTag.Add(target.tag);
         var muzzleFlash = Instantiate(muzzleFlashPrefab, fireOrigin.position, fireOrigin.rotation);
         float size = Random.Range(0.3f, 0.5f);
         muzzleFlash.transform.localScale = new Vector3(size, size, size);

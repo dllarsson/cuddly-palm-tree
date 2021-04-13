@@ -9,14 +9,14 @@ public class Projectile : MonoBehaviour, IDamageDealer
     [SerializeField] GameObject deathSprite;
     [SerializeField] GameObject deathEffect;
     [SerializeField] float deathDelay = 0.2f;
-    public string TargetTag { get; set; }
+    public List<string> TargetTag { get; set; }
     public float Damage { get => projectileDamage; set => projectileDamage = value; }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         var target = collision.gameObject;
         var targetHealth = target.GetComponent<IHealthHandler>();
-        if(targetHealth != null && target.CompareTag(TargetTag))
+        if(targetHealth != null && TargetTag.Contains(target.tag))
         {
             targetHealth.OnDamage(Damage);
         }
