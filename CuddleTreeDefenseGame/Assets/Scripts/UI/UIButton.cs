@@ -6,7 +6,7 @@ public abstract class UIButton : MonoBehaviour
     [SerializeField] KeyCode hotkey;
     void Start()
     {
-        EventHandler.current.onKeyPress += HotkeyPressed;
+        EventHandler.current.OnKeyPress += HotkeyPressed;
         var button = GetComponent<Button>();
         button.onClick.AddListener(() => OnButtonClick());
     }
@@ -20,6 +20,6 @@ public abstract class UIButton : MonoBehaviour
     public abstract void OnButtonClick();
     void OnDestroy()
     {
-        EventHandler.current.onKeyPress -= HotkeyPressed;
+        EventHandler.current.OnKeyPress -= HotkeyPressed;
     }
 }

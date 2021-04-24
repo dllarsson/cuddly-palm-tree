@@ -14,7 +14,7 @@ public class SpawnHandler : MonoBehaviour
     private void Start()
     {
         //Move this if we want to be able to spawn building from the start
-        EventHandler.current.onBuildingSpawn += CreateGhostBuilding;
+        EventHandler.current.OnBuildingSpawn += CreateGhostBuilding;
     }
     void CreateGhostBuilding(GameObject buildingPrefab)
     {
@@ -24,7 +24,7 @@ public class SpawnHandler : MonoBehaviour
             Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
             Tools.ToggleScriptsInGameObject(createdAsset, false);
             buildingPlacementRoutine = StartCoroutine(FollowMouse(createdAsset));
-            EventHandler.current.onMouseClick += PlaceBuilding;
+            EventHandler.current.OnMouseClick += PlaceBuilding;
             isConstructing = true;
         }
 
@@ -46,7 +46,7 @@ public class SpawnHandler : MonoBehaviour
         {
             if(CanBePlacedOnSpot())
             {
-                EventHandler.current.onMouseClick -= PlaceBuilding;
+                EventHandler.current.OnMouseClick -= PlaceBuilding;
                 StopCoroutine(buildingPlacementRoutine);
                 Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
                 Tools.ToggleScriptsInGameObject(createdAsset, true);
