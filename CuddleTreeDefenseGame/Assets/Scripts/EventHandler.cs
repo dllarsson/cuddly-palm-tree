@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class EventHandler : MonoBehaviour
 {
-    [SerializeField] MouseButton placeMouseButton;
-    private GameObject createdAsset;
-    private Coroutine buildingPlacementRoutine;
     public static EventHandler current;
-
     private void Awake()
     {
         current = this;

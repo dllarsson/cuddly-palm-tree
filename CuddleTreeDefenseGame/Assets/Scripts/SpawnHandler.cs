@@ -7,8 +7,9 @@ public class SpawnHandler : MonoBehaviour
     [SerializeField] MouseButton placeMouseButton;
     private GameObject createdAsset;
     private Coroutine buildingPlacementRoutine;
-    private Vector4 ghostCanPlace = new Vector4(1, 1, 1, 0.25f);
-    private Vector4 ghostInvalidPlacement = new Vector4(1, 0, 0, 0.25f);
+    private Color ghostCanPlace = new Color(1.0f, 1.0f, 1.0f, 0.25f);
+    private Color ghostInvalidPlacement = new Color(1.0f, 0.0f, 0.0f, 0.25f);
+    private Color ordinaryColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     private void Start()
     {
         //Move this if we want to be able to spawn building from the start
@@ -21,14 +22,10 @@ public class SpawnHandler : MonoBehaviour
         Tools.ToggleScriptsInGameObject(createdAsset, false);
         buildingPlacementRoutine = StartCoroutine(FollowMouse(createdAsset));
         EventHandler.current.onMouseClick += PlaceBuilding;
-        createdAsset.tag = "Ghost";
     }
-    bool canBePlacedOnSpot()
+    bool CanBePlacedOnSpot()
     {
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        Collider2D[] collidedThings = new Collider2D[1];
-
-        var nrOfCollitions = createdAsset.GetComponent<Collider2D>().OverlapCollider(contactFilter, collidedThings);
+        int nrOfCollitions = createdAsset.GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D(), new Collider2D[1]);
         if (nrOfCollitions != 0)
         {
             return false;
@@ -41,11 +38,11 @@ public class SpawnHandler : MonoBehaviour
     {
         if(button == placeMouseButton)
         {
-            if(canBePlacedOnSpot())
+            if(CanBePlacedOnSpot())
             {
                 EventHandler.current.onMouseClick -= PlaceBuilding;
                 StopCoroutine(buildingPlacementRoutine);
-                Tools.SetColorOnGameObject(createdAsset, new Color(1, 1, 1, 1));
+                Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
                 Tools.ToggleScriptsInGameObject(createdAsset, true);
                 createdAsset.tag = "Tower";
             }
@@ -58,7 +55,7 @@ public class SpawnHandler : MonoBehaviour
             var worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             worldpos = Tools.GetScreenToWorldPoint2D(worldpos);
             src.transform.position = worldpos;
-            if(!canBePlacedOnSpot())
+            if(!CanBePlacedOnSpot())
             {
                 Tools.SetColorOnGameObject(createdAsset, ghostInvalidPlacement);
             }
