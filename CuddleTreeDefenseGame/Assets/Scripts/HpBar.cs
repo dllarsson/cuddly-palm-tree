@@ -14,7 +14,7 @@ public class HpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        localScale.x = (transform.parent.GetComponent<EnemyDragon>().Hp / 100);
+        localScale.x = (transform.parent.GetComponent<IHealthHandler>().Health / 100);
         transform.localScale = localScale;
     }
 }

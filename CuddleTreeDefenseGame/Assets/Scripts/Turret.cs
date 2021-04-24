@@ -121,10 +121,7 @@ public class Turret : MonoBehaviour
             yield return new WaitWhile(() => isReloaded == false);
             yield return new WaitWhile(() => isRotating == true);
             if(!isFiring) yield break;
-            var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation);
-            projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
-            FireProjectileEffect();
-            Destroy(projectile, 10f);
+            FireProjectile();
             StartCoroutine(ReloadTime());
         }
     }
@@ -134,12 +131,16 @@ public class Turret : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         isReloaded = true;
     }
-    private void FireProjectileEffect()
+    private void FireProjectile()
     {
+        var projectile = Instantiate(projectilePrefab, fireOrigin.position, fireOrigin.rotation);
+        projectile.GetComponent<Rigidbody2D>().velocity = fireOrigin.up * projectileSpeed;
+        projectile.GetComponent<IDamageDealer>().TargetTag.Add(target.tag);
         var muzzleFlash = Instantiate(muzzleFlashPrefab, fireOrigin.position, fireOrigin.rotation);
         float size = Random.Range(0.3f, 0.5f);
         muzzleFlash.transform.localScale = new Vector3(size, size, size);
         Destroy(muzzleFlash, 1.0f);
+        Destroy(projectile, 10f);
     }
     private void OnDestroy()
     {
