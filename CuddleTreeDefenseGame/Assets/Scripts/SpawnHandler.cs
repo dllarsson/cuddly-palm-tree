@@ -10,7 +10,7 @@ public class SpawnHandler : MonoBehaviour
     private Color ghostCanPlace = new Color(1.0f, 1.0f, 1.0f, 0.25f);
     private Color ghostInvalidPlacement = new Color(1.0f, 0.0f, 0.0f, 0.25f);
     private Color ordinaryColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-    bool isBuilding = false;
+    bool isConstructing = false;
     private void Start()
     {
         //Move this if we want to be able to spawn building from the start
@@ -18,14 +18,14 @@ public class SpawnHandler : MonoBehaviour
     }
     void CreateGhostBuilding(GameObject buildingPrefab)
     {
-        if (!isBuilding)
+        if (!isConstructing)
         {
             createdAsset = Instantiate(buildingPrefab);
             Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
             Tools.ToggleScriptsInGameObject(createdAsset, false);
             buildingPlacementRoutine = StartCoroutine(FollowMouse(createdAsset));
             EventHandler.current.onMouseClick += PlaceBuilding;
-            isBuilding = true;
+            isConstructing = true;
         }
 
     }
@@ -50,7 +50,7 @@ public class SpawnHandler : MonoBehaviour
                 StopCoroutine(buildingPlacementRoutine);
                 Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
                 Tools.ToggleScriptsInGameObject(createdAsset, true);
-                isBuilding = false;
+                isConstructing = false;
             }
         }
     }
