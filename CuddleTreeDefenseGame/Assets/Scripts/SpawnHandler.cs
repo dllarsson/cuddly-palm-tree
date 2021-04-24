@@ -44,7 +44,6 @@ public class SpawnHandler : MonoBehaviour
                 StopCoroutine(buildingPlacementRoutine);
                 Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
                 Tools.ToggleScriptsInGameObject(createdAsset, true);
-                createdAsset.tag = "Tower";
             }
         }
     }
