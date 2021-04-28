@@ -9,28 +9,28 @@ public class EventHandler : MonoBehaviour
     {
         current = this;
     }
-    public event Action<KeyCode> onKeyPress;
+    public event Action<KeyCode> OnKeyPress;
     public void KeyPress(KeyCode key)
     {
-        if(onKeyPress != null)
+        if(OnKeyPress != null)
         {
-            onKeyPress(key);
+            OnKeyPress(key);
         }
     }
-    public event Action<MouseButton> onMouseClick;
+    public event Action<MouseButton> OnMouseClick;
     public void MouseClick(MouseButton button)
     {
-        if(onMouseClick != null)
+        if(OnMouseClick != null)
         {
-            onMouseClick(button);
+            OnMouseClick(button);
         }
     }
-    public event Action<GameObject> onBuildingSpawn;
+    public event Action<GameObject> OnBuildingSpawn;
     public void BuildingSpawn(GameObject buildingPrefab)
     {
-        if(onBuildingSpawn != null)
+        if(OnBuildingSpawn != null)
         {
-            onBuildingSpawn(buildingPrefab);
+            OnBuildingSpawn(buildingPrefab);
         }
     }
 }
