@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Utility;
 
 public class Turret : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class Turret : MonoBehaviour
         }
         while(target == null)
         {
-            var nearestTarget = Tools.FindNearestTarget(gameObject, "Enemy", minTurretRange, MaxTurretRange);
+            var nearestTarget = FindColliders.FindNearestTarget(gameObject, "Enemy", minTurretRange, MaxTurretRange);
             if(nearestTarget != null)
             {
                 target = nearestTarget.gameObject;
@@ -64,7 +65,7 @@ public class Turret : MonoBehaviour
     {
         while(true)
         {
-            if(Tools.IsInRange(gameObject, target, minTurretRange, MaxTurretRange) != null
+            if(FindColliders.InRange(gameObject, target, minTurretRange, MaxTurretRange) != null
                 && target != null)
             {
                 var targetAcquired = StartCoroutine(RotateToTarget(target));
