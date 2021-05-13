@@ -4,22 +4,15 @@ using UnityEngine;
 public abstract class UIButton : MonoBehaviour
 {
     [SerializeField] KeyCode hotkey;
-    void Start()
+    private void Start()
     {
-        EventHandler.current.OnKeyPress += HotkeyPressed;
+        EventHandler.current.OnKeyPress += (key, modifier) =>
+        {
+            if(key == hotkey && modifier == EventModifiers.None)
+                OnButtonClick();
+        };
         var button = GetComponent<Button>();
         button.onClick.AddListener(() => OnButtonClick());
     }
-    void HotkeyPressed(KeyCode key)
-    {
-        if(key == hotkey)
-        {
-            OnButtonClick();
-        }
-    }
     public abstract void OnButtonClick();
-    void OnDestroy()
-    {
-        EventHandler.current.OnKeyPress -= HotkeyPressed;
-    }
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEditor;
+using Utility;
 
 [CustomPropertyDrawer(typeof(MinMaxRangeAttribute))]
 public class MinMaxRangeDrawer : PropertyDrawer
@@ -11,7 +12,7 @@ public class MinMaxRangeDrawer : PropertyDrawer
 
         if(property.propertyType == SerializedPropertyType.Vector2)
         {
-            position = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+            position = position.Replace(height: EditorGUIUtility.singleLineHeight);
 
             float minValue = (float)Math.Round(property.vector2Value.x, 2);
             float maxValue = (float)Math.Round(property.vector2Value.y, 2);
@@ -27,12 +28,12 @@ public class MinMaxRangeDrawer : PropertyDrawer
 
             var style = new GUIStyle();
             float indentValue = EditorGUI.indentLevel * 15f;
-            float width = Math.Max(50f, style.CalcSize(new GUIContent(minValue.ToString())).x + 10);
+            float fieldWidth = Math.Max(50f, style.CalcSize(new GUIContent(minValue.ToString())).x + 10);
 
-            var leftRect = new Rect(EditorGUIUtility.labelWidth - indentValue + 20f, position.y, width, position.height);
+            var leftRect = position.Replace(EditorGUIUtility.labelWidth - indentValue + 20f, width: fieldWidth);
             vector2Value.x = EditorGUI.FloatField(leftRect, minValue);
 
-            var rightRect = new Rect((position.x - indentValue) + position.width - width, position.y, width, position.height);
+            var rightRect = position.Replace((position.x - indentValue) + position.width - fieldWidth, width: fieldWidth);
             vector2Value.y = EditorGUI.FloatField(rightRect, maxValue);
             position.y += EditorGUIUtility.singleLineHeight;
 
@@ -43,7 +44,6 @@ public class MinMaxRangeDrawer : PropertyDrawer
             throw new UnityException("Attribute only works for Vector2 properties.");
         }
     }
-
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         return EditorGUIUtility.singleLineHeight * 2 + 2f;

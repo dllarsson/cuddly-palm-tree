@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 
 public class Projectile : MonoBehaviour, IDamageDealer
 {
@@ -20,8 +21,8 @@ public class Projectile : MonoBehaviour, IDamageDealer
         if(targetHealth != null && TargetTag.Contains(target.tag))
         {
             targetHealth.OnDamage(Damage);
+            OnDeath();
         }
-        OnDeath();
     }
     public void OnDeath()
     {

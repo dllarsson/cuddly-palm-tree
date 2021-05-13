@@ -6,14 +6,16 @@ using UnityEngine;
 public class EnemyDragon : MonoBehaviour, IHealthHandler
 {
 
-    [SerializeField] float health = 100;
+    [SerializeField] float maxHealth = 100;
 
     Collider2D target;
     bool hasTarget = false;
-    public float Health { get => health; set => health = value; }
+    public float Health { get; set; }
+    public float MaxHealth => maxHealth;
 
     private void Start()
     {
+        Health = MaxHealth;
         target = FindNearestTarget();
     }
     void Update()

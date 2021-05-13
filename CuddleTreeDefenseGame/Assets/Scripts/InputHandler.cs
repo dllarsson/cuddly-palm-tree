@@ -14,7 +14,7 @@ public class InputHandler : MonoBehaviour
                 && !keyEventCache.Contains(currentEvent.keyCode))
             {
                 keyEventCache.Add(currentEvent.keyCode);
-                EventHandler.current.KeyPress(currentEvent.keyCode);
+                EventHandler.current.KeyPress(currentEvent.keyCode, currentEvent.modifiers);
             }
             else if(currentEvent.type == EventType.KeyUp)
             {

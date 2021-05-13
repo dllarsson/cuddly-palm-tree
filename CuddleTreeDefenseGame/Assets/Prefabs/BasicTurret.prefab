@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 343975761878982042}
   - component: {fileID: 343975761878982043}
-  - component: {fileID: 343975761878982041}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -84,26 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &343975761878982041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343975761878982036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bcb76127e55014f8c43dc245dd307f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3339689785915431126, guid: 3b62e3844e2e73243921043f2ac69307, type: 3}
-  muzzleFlashPrefab: {fileID: 5129263147653250981, guid: 8e596d127df3cee42afa4c1ae2ab1a36, type: 3}
-  fireOrigin: {fileID: 7285069270644584073}
-  fireRate: 2
-  projectileSpeed: 10
-  maxTurretRange: 10
-  maxRotationSpeed: 100
-  scanInterval: 0.5
 --- !u!1 &343975762028986930
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,8 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 343975762028986935}
   - component: {fileID: 343975762028986928}
-  - component: {fileID: 343975762028986934}
   - component: {fileID: 6164056178339601792}
+  - component: {fileID: 3709237558020205050}
+  - component: {fileID: -4946064372085770517}
   m_Layer: 0
   m_Name: BasicTurret
   m_TagString: Tower
@@ -189,19 +169,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &343975762028986934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343975762028986930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e233bc36e009a734cabbe42ed48d6770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeIndicatorPrefab: {fileID: 7345115511824565745, guid: 91882d7e3417fab4fa2b5018da873a83, type: 3}
 --- !u!60 &6164056178339601792
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -235,6 +202,45 @@ PolygonCollider2D:
       - {x: -1.12, y: 0.48}
       - {x: -1.12, y: -0.48}
       - {x: -0.48, y: -1.12}
+--- !u!114 &3709237558020205050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975762028986930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be8956ede4301742bd6c3f6954bb759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 343975761878982036}
+  projectilePrefab: {fileID: 3339689785915431126, guid: 3b62e3844e2e73243921043f2ac69307, type: 3}
+  muzzleFlashPrefab: {fileID: 5129263147653250981, guid: 8e596d127df3cee42afa4c1ae2ab1a36, type: 3}
+  attackRange: {x: 0, y: 10}
+  scanInterval: 2
+  searchRotationSpeed: 10
+  rotationDirection: 0
+  changeTargetDelay: 0.5
+  targetTags:
+  - Enemy
+  fireOrigin: {fileID: 7285069270644584073}
+  maxTurnSpeed: 80
+  fireRate: 1
+  projectileSpeed: 10
+--- !u!114 &-4946064372085770517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343975762028986930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4617f50eab8943b40a1aa63384616994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeIndicatorPrefab: {fileID: 7345115511824565745, guid: 91882d7e3417fab4fa2b5018da873a83, type: 3}
 --- !u!1 &4616717965264650480
 GameObject:
   m_ObjectHideFlags: 0

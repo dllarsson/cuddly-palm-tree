@@ -9,13 +9,10 @@ public class EventHandler : MonoBehaviour
     {
         current = this;
     }
-    public event Action<KeyCode> OnKeyPress;
-    public void KeyPress(KeyCode key)
+    public event Action<KeyCode, EventModifiers> OnKeyPress;
+    public void KeyPress(KeyCode key, EventModifiers modifier)
     {
-        if(OnKeyPress != null)
-        {
-            OnKeyPress(key);
-        }
+        OnKeyPress?.Invoke(key, modifier);
     }
     public event Action<MouseButton> OnMouseClick;
     public void MouseClick(MouseButton button)

@@ -21,8 +21,8 @@ public class SpawnHandler : MonoBehaviour
         if (!isConstructing)
         {
             createdAsset = Instantiate(buildingPrefab);
-            Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
-            Tools.ToggleScriptsInGameObject(createdAsset, false);
+            Utility.Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
+            Utility.Tools.ToggleScriptsInGameObject(createdAsset, false);
             buildingPlacementRoutine = StartCoroutine(FollowMouse(createdAsset));
             EventHandler.current.OnMouseClick += PlaceBuilding;
             isConstructing = true;
@@ -48,8 +48,8 @@ public class SpawnHandler : MonoBehaviour
             {
                 EventHandler.current.OnMouseClick -= PlaceBuilding;
                 StopCoroutine(buildingPlacementRoutine);
-                Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
-                Tools.ToggleScriptsInGameObject(createdAsset, true);
+                Utility.Tools.SetColorOnGameObject(createdAsset, ordinaryColor);
+                Utility.Tools.ToggleScriptsInGameObject(createdAsset, true);
                 isConstructing = false;
             }
         }
@@ -59,15 +59,15 @@ public class SpawnHandler : MonoBehaviour
         while (true)
         {
             var worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldpos = Tools.GetScreenToWorldPoint2D(worldpos);
+            worldpos = Utility.Tools.GetScreenToWorldPoint2D(worldpos);
             src.transform.position = worldpos;
             if(!CanBePlacedOnSpot())
             {
-                Tools.SetColorOnGameObject(createdAsset, ghostInvalidPlacement);
+                Utility.Tools.SetColorOnGameObject(createdAsset, ghostInvalidPlacement);
             }
             else
             {
-                Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
+                Utility.Tools.SetColorOnGameObject(createdAsset, ghostCanPlace);
             }
 
             yield return null;
