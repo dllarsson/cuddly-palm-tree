@@ -22,6 +22,7 @@ public class ProjectileTower : Tower, ITargeter, IRangeIndicator
     [SerializeField] private RotationDirection rotationDirection;
 
     [Header("Targeting Settings")]
+    //dont need
     [SerializeField] private float changeTargetDelay = 0.5f;
     [TagSelector, SerializeField]
     private string[] targetTags = { "Enemy" };
@@ -85,7 +86,7 @@ public class ProjectileTower : Tower, ITargeter, IRangeIndicator
         //For testing - remove behaviour declarations that will be unused during runtime
         //Eventually make static somewhere
         dictBehaviours.Add("Idle_ScanForTargetsSporatic", new Idle_ScanForTargetsSporatic(this, turret, (int)rotationDirection, searchRotationSpeed, targetTags, attackRange, scanInterval));
-        dictBehaviours.Add("Idle_NoRotation", new Idle_NoRotation(this, turret, (int)rotationDirection, searchRotationSpeed, targetTags, attackRange, scanInterval));
+        dictBehaviours.Add("Idle_NoRotation", new Idle_NoRotation(this, targetTags, attackRange, scanInterval));
         dictBehaviours.Add("Idle_ScanForTargetsRotation", new Idle_ScanForTargetsRotation(this, turret, (int)rotationDirection, searchRotationSpeed, targetTags, attackRange, scanInterval));
         dictBehaviours.Add("Target_Default", new Target_Default(this, attackRange, changeTargetDelay));
         dictBehaviours.Add("Target_HighestHealth", new Target_HighestHealth(this, attackRange, changeTargetDelay));

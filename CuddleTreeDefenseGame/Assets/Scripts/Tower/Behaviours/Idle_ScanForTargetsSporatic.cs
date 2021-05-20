@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -58,7 +59,7 @@ namespace StateMachine.Behaviours
             while(!ct.IsCancellationRequested)
             {
                 obj.AvaliableTargets = FindColliders.GetTargets(obj.CurrentGameObject, targetTags, attackRange);
-                if(obj.AvaliableTargets == null && obj.TargetObject != null)
+                if(!obj.AvaliableTargets.Any() && obj.TargetObject != null)
                     obj.TargetObject = null;
                 await UniTask.Delay(TimeSpan.FromSeconds(scanInterval), cancellationToken: ct).SuppressCancellationThrow();
             }
